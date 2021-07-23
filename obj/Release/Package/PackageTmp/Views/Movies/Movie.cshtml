@@ -1,0 +1,21 @@
+﻿@model Veenca.ViewModels.RandomMovieViewModel
+@{
+    ViewBag.Title = "Movie";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Movies</h2>
+@if (Model.Movies.Count == 0)
+{
+
+
+<h3>Non sono presenti film</h3>  }
+else {
+<ul>
+    @foreach (var info in Model.Movies) {
+        <li>@info.name</li>
+    }
+</ul>
+}
+
+

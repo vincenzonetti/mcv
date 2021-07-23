@@ -1,0 +1,46 @@
+﻿@model Veenca.ViewModels.MovieViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Films</h2>
+<table id="films" class="table table-bordered table-hover">
+    <thead>
+    <th>Nome</th>
+    <th>Genere</th>
+    
+
+    </thead>
+
+</table>
+
+@section scripts{
+    <script>
+        $(document).ready(function myfunction() {
+            
+                var table = $("#films").DataTable({
+                    ajax: {
+                        url: "/api/movies",
+                        dataSrc: ""
+                    },
+                    columns: [
+                        {
+                            data: "name",
+                          
+                        },
+                        {
+                            data: "genere.name"
+                        }
+                    ]
+                });
+
+
+          
+
+
+        });
+    </script>
+
+}
+   

@@ -1,0 +1,56 @@
+﻿@model Veenca.ViewModels.NewMovieViewModel
+@{
+    ViewBag.Title = "MovieForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@if (Model.Movie.id == 0)
+{
+
+
+    <h2>Nuovo Film</h2>
+}
+else
+{
+    <h2>Modifica Film</h2>
+}
+@using (Html.BeginForm("Update", "Movies"))
+{
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Movie.name)
+        @Html.TextBoxFor(m => m.Movie.name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Movie.name)
+    </div>
+    <div class="form-group">
+        <label for="Movie_dataRilascio">Data Rilascio</label>
+        @Html.TextBoxFor(m => m.Movie.dataRilascio, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Movie.dataRilascio)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Movie.genereID)
+        @Html.DropDownListFor(m => m.Movie.genereID, new SelectList(Model.Generi, "id", "Name"), "Seleziona un genere", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Movie.genereID)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Movie.dataRegistrazione)
+        @Html.TextBoxFor(m => m.Movie.dataRegistrazione, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Movie.dataRegistrazione)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Movie.stock)
+        @Html.TextBoxFor(m => m.Movie.stock, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Movie.stock)
+    </div>
+    @Html.HiddenFor(m => m.Movie.id);
+    @Html.AntiForgeryToken();
+    <button type="submit" class="btn btn-primary">
+        Conferma
+    </button>
+
+}
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval");
+}

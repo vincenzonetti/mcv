@@ -1,0 +1,15 @@
+﻿@model Veenca.Models.Movie
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Details</h3>
+
+<h2>@Model.name</h2>
+<ul>
+    <li>Genere: @Model.Genere.name</li>
+    <li>Data Rilascio: @Model.dataRilascio</li>
+    <li>Data Aggiunto: @Model.dataRegistrazione</li>
+    <li>Numero in stock: @Model.stock</li>
+</ul>

@@ -1,0 +1,17 @@
+﻿@model Veenca.ViewModels.RandomMovieViewModel
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@foreach (var cliente in Model.Customers)
+{<h2>@cliente.name </h2>
+<p>@cliente.MembershipType.textAbbonamento</p>
+
+if (cliente.Compleanno != new DateTime(2001, 1, 1, 0, 0, 0))
+{
+    <p>@cliente.Compleanno</p>
+}
+
+}
+
